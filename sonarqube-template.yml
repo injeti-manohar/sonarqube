@@ -220,7 +220,8 @@ objects:
                     secretKeyRef:
                       key: password
                       name: sonar-ldap-bind-dn
-              imagePullPolicy: Always
+              image: theodor2311/sonarqube:latest
+              imagePullPolicy: IfNotPresent
               livenessProbe:
                 failureThreshold: 3
                 httpGet:
@@ -267,14 +268,6 @@ objects:
               emptyDir: {}
       test: false
       triggers:
-        - imageChangeParams:
-            automatic: true
-            containerNames:
-              - sonarqube
-            from:
-              kind: ImageStreamTag
-              name: sonarqube:latest
-          type: ImageChange
         - type: ConfigChange
   - apiVersion: v1
     kind: Route
