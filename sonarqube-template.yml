@@ -4,22 +4,6 @@ metadata:
   name: "sonarqube"
 objects:
   - apiVersion: v1
-    kind: ImageStream
-    metadata:
-      labels:
-        app: sonarqube
-      name: sonarqube
-    spec:
-      tags:
-        - annotations:
-            description: The SonarQube Docker image
-            tags: sonarqube
-          from:
-            kind: DockerImage
-            name: docker.io/theodor2311/sonarqube:latest
-          importPolicy: {}
-          name: latest
-  - apiVersion: v1
     kind: Secret
     stringData:
       database-name: ${POSTGRES_DATABASE_NAME}
